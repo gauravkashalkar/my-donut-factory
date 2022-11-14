@@ -40,7 +40,7 @@ Producer produces inventory data for all donuts currently available in donut fac
 
 ```json
 {
-	"type": "donut",
+    "type": "donut",
     "weight-unit": "lb", 
     "price-unit": "$/lb",
     "price": 10.75,
@@ -99,14 +99,14 @@ Consumer only supports three types of donut's. Original, Chocolate and Blueberry
 		"price": 19.25,
 		"unit": "$/kg",
 	},
-    "OriginalMapleDonut" : {
+    	"OriginalMapleDonut" : {
 
 		"weight": 0.70,
 		"unit": "kg",
 		"price": 19.25,
 		"unit": "$/kg",
 	},
-    "OriginalSugarDonut" : {
+    	"OriginalSugarDonut" : {
 		"weight": 0.70,
 		"unit": "kg",
 		"price": 19.25,
