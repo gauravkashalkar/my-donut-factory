@@ -5,33 +5,7 @@ This hypothetical use case has two entities a kiosk aka consumer and a producer 
 
 Consumer is requesting today's inventory of donuts. Kiosk needs to update itself with latest from inventory.
 
-### Activity Diagram:
-
-```plantuml
-:Consumer;
-:New request for inventory in consumer's format;
-:Transform request by adding identity of consumer;
-:Sends transformed request to producer;
-:Start a job to process inventory request;
-:Producer acknowledges request;
-```
-
-### Sequence Diagram:
-
-```plantuml
-actor Consumer as c
-participant "Integration Layer" as il
-participant "Producer" as p
-
-c -> il: POST (consumer format)
-group MuleSoft
-    il->il:Transformation logic
-end group
-il->p: POST (producer format)
-p -> il: 202 Accepted
-il -> c: 202 Accepted
-```
-
+![image](https://user-images.githubusercontent.com/107075688/201716462-981827f0-4ee8-4e51-a7b6-e74a0d10e291.png)
 
 ### Consumer's JSON
 
@@ -58,32 +32,7 @@ Producer donut inventory request JSON.
 
 Once producer's job successfully finished; it responds asynchronously. Producer creates a json with all available donuts and toppings. It also includes today's pricing in the response. Producer sends a JSON to integration layer in its own format. Integration layer performs transformation from producer's JSON format  to consumer's format and sends the response to consumer.
 
-### Activity Diagram:
-
-```plantuml
-:Producer;
-:Ready with inventory details;
-:Sends response to integration layer; 
-:Transform request into consumer's format;
-:Sends transformed request to consumer;
-:Consumer acknowledges response;
-```
-
-### Sequence Diagram:
-
-```plantuml
-actor Producer as p
-participant "Integration Layer" as il
-participant "Consumer" as c
-
-p -> il: POST (producer format)
-group MuleSoft
-    il->il:Transformation logic
-end group
-il->c: POST (consumer format)
-c -> il: 202 Accepted
-il -> p: 202 Accepted
-```
+![image](https://user-images.githubusercontent.com/107075688/201716577-143b0f70-40cb-4713-a411-4e066ed149dc.png)
 
 ### Producer's JSON
 
